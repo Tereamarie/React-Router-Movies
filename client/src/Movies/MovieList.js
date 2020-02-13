@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import MovieCard from './MovieCard'
+import {NavLink} from 'react-router-dom'
 import axios from 'axios';
 
 const MovieList = props => {
@@ -13,8 +14,7 @@ const MovieList = props => {
         })
         .catch(error => {
           console.error('Server Error', error);
-        }
-      );
+        });
     }
     
     getMovies();
@@ -30,11 +30,11 @@ const MovieList = props => {
 }
 
 function MovieDetails({ movie }) {
-  const { title, director, metascore, stars } = movie;
-    // console.log('MovieList: MovieDetails: ', movie)
+  const { title, director, metascore, stars, id } = movie;
   return (
+    <NavLink to={`/movies/${id}`}>
     <div className="movie-card">
-      <Link to={`/movies/${movie.id}`}><h2>{title}</h2></Link>
+      <h2>{title}</h2>
       <div className="movie-director">
         Director: <em>{director}</em>
       </div>
@@ -49,7 +49,9 @@ function MovieDetails({ movie }) {
         </div>
       ))}
     </div>
+    
+    </NavLink>
   );
-}
+      }
 
-export default MovieList;
+export default MovieList

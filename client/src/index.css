@@ -70,3 +70,7 @@ body {
   padding: 5px 10px;
   background-color: lightskyblue;
 }
+.clear-button {
+  padding: 5px 10px;
+  background-color: rgb(184, 46, 142);
+}
